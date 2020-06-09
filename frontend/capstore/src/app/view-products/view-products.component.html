@@ -1,4 +1,16 @@
-<div class="container col-md-3 card card-body float-left"*ngFor='let product of productService.productArray' style="height: 550px;">
+<div class="container h-100">
+    <div class="d-flex justify-content-center h-100">
+        <div class="searchbar">
+            <input class="search_input" type="text" name="" placeholder="Search..." [(ngModel)]='searchText'
+                placeholder="Enter merchant's email Id or category...">
+            <a href="#" class="search_icon"><i class="fas fa-search"></i></a>
+            <!-- <input type="search" name="search" [(ngModel)]='search' placeholder="Enter location..." 
+        class="form-control"> -->
+        </div>
+    </div>
+</div>
+
+<div class="container col-md-3 card card-body float-left"*ngFor='let product of productService.productArray | merchantProductSearch :searchText ' style="height: 550px;">
     <img [src]="product.productImage" style="height: 175px;">
     <h5 class="text-center mt-5" style="color: blueviolet;">{{product.productName}}</h5>
     <h6 class="text-center">Product Brand : {{product.productBrandName}}</h6>
@@ -6,6 +18,7 @@
     <h6 class="text-center">Product category : {{product.productCategory}}</h6>
     <h6 class="text-center">{{product.productDiscount}} % Off</h6>
     <h6 class="text-center">After discout price : {{calculateDiscountPrice(product.productPrice, product.productDiscount)}}</h6>
+    <h6 class="text-center">Merchant's Email Id : {{product.email}}</h6>
     <button (click)='deleteProduct(product.productId)'>
         Delete
     </button>

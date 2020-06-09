@@ -10,6 +10,7 @@ import { ViewProductsComponent } from './view-products/view-products.component';
 import {HttpClientModule} from '@angular/common/http';
 import { AddProductComponent } from './add-product/add-product.component';
 import { ViewMerchantProductsComponent } from './view-merchant-products/view-merchant-products.component';
+import { MerchantProductSearchPipe } from './merchant-product-search.pipe';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { ViewMerchantProductsComponent } from './view-merchant-products/view-mer
     HomeComponent,
     ViewProductsComponent,
     AddProductComponent,
-    ViewMerchantProductsComponent
+    ViewMerchantProductsComponent,
+    MerchantProductSearchPipe
   ],
   imports: [
     BrowserModule,

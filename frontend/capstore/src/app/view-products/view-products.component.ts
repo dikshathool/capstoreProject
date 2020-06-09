@@ -14,6 +14,8 @@ export class ViewProductsComponent implements OnInit {
   message = null;
   statusCode = null;
 
+  searchText: any; // html - search
+
   products: any[];
 
   totalDiscount: any;
