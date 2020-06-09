@@ -1,9 +1,10 @@
 package com.capgemini.capstore.validation;
 
 public interface Validation {
-	public boolean emailValidation(String email);
+	// Regex
+		public Integer validateNumber(String id);
 
-	public boolean passwordValidation(String password);
-	
-	public boolean mobileNoValidation(String phoneNumber);
+		public String emailIdValidate(String email);
+
+		public Double doubleValidate(String number);
 }

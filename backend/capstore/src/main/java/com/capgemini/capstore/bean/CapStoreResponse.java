@@ -11,8 +11,8 @@ public class CapStoreResponse {
 	private String description;
 	private ProductBean productBean;
 	private List<ProductBean> productList;
-	private List<CouponBean> couponList;
 	private MerchantPermanentBean merchantPermanentBean;
+	private List<ReturnProductBean> returnProductList;
 	
 	//Getters and Setters methods
 	public int getStatusCode() {
@@ -45,18 +45,20 @@ public class CapStoreResponse {
 	public void setProductList(List<ProductBean> productList) {
 		this.productList = productList;
 	}
-	public List<CouponBean> getCouponList() {
-		return couponList;
-	}
-	public void setCouponList(List<CouponBean> couponList) {
-		this.couponList = couponList;
-	}
+	
 	public MerchantPermanentBean getMerchantPermanentBean() {
 		return merchantPermanentBean;
 	}
 	public void setMerchantPermanentBean(MerchantPermanentBean merchantPermanentBean) {
 		this.merchantPermanentBean = merchantPermanentBean;
 	}
+	public List<ReturnProductBean> getReturnProductList() {
+		return returnProductList;
+	}
+	public void setReturnProductList(List<ReturnProductBean> returnProductList) {
+		this.returnProductList = returnProductList;
+	}
+	
 	
 	
 }//End of Class

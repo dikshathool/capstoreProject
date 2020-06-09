@@ -20,7 +20,4 @@ public interface ProductService {
 	
 	public List<ProductBean> showMerchantProducts(String email);
 	
-	public List<CouponBean> showCoupon();
-	
-	public boolean addCoupon(CouponBean couponBean);
 }//End of interface

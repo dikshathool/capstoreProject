@@ -25,7 +25,6 @@ import com.capgemini.capstore.service.ProductService;
 public class ProductController {
 
 	private ProductService productService;
-	private MerchantService merchantService;
 
 	@Autowired
 	public ProductController(ProductService productService) {
@@ -105,27 +104,6 @@ public class ProductController {
 	}// End of updateProduct()
 
 		
-		@GetMapping("/viewProfile")
-		public CapStoreResponse viewProfile(@RequestParam String email) {
-			CapStoreResponse capstoreResponseBean = new CapStoreResponse();
-			MerchantPermanentBean merchantPermanentBean = merchantService.viewProfile(email);
-			capstoreResponseBean.setStatusCode(200);
-			capstoreResponseBean.setMessage("success");
-			capstoreResponseBean.setDescription(" Profile Found");
-			capstoreResponseBean.setMerchantPermanentBean(merchantPermanentBean);
-			return capstoreResponseBean;
-
-		}
 		
-		@GetMapping("/getReturnProductList")
-		public CapStoreResponse getReturnProductList(@RequestParam int productId) {
-			List<ReturnProductBean> productList = merchantService.getReturnProductList(productId);
-			CapStoreResponse capstoreResponseBean = new CapStoreResponse();
-			capstoreResponseBean.setStatusCode(200);
-			capstoreResponseBean.setMessage("success");
-			capstoreResponseBean.setDescription("Return Product List Found...");
-			capstoreResponseBean.getProductList();
-			return capstoreResponseBean;
-		}
 
 }// End of Class

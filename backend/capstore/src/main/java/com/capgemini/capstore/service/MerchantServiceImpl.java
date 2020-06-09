@@ -16,15 +16,15 @@ public class MerchantServiceImpl implements MerchantService{
 	private MerchantDAO merchantDao;
 //	@Autowired
 //	Validation Validation;
-
-	@Override
-	public List<ReturnProductBean> getReturnProductList(int merchantId) {
-		return merchantDao.getReturnProductList(merchantId);
-	}
 	
 	@Override
 	public MerchantPermanentBean viewProfile(String email) {
 		return merchantDao.viewProfile(email);
+	}
+
+	@Override
+	public List<ReturnProductBean> getReturnProductList(String email) {
+		return merchantDao.getReturnProductList(email);
 	}
 
 }

@@ -24,9 +24,6 @@ public interface ProductDAO {
 	public boolean updateProduct(ProductBean productBean);
 	
 	public List<ProductBean> showMerchantProducts(String email);
-	
-	public List<CouponBean> showCoupon();
-	
-	public boolean addCoupon(CouponBean couponBean);
+
 	
 }//End of interface

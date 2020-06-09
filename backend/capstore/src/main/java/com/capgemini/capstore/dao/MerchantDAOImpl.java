@@ -20,14 +20,14 @@ public class MerchantDAOImpl implements MerchantDAO {
 	private EntityManagerFactory entityManagerFactory;
 
 	@Override
-	public List<ReturnProductBean> getReturnProductList(int merchantId) {
+	public List<ReturnProductBean> getReturnProductList(String email) {
 		
 		List<ReturnProductBean> productList = null;
 		EntityManager entityManager = entityManagerFactory.createEntityManager();
 		try {
-			String jpql = "from ReturnProductBean where merchantId =:merchantId ";
+			String jpql = "from ReturnProductBean where email =:email ";
 			Query query = entityManager.createQuery(jpql);
-			query.setParameter("merchantId", merchantId);
+			query.setParameter("email", email);
 			productList = (List<ReturnProductBean>) query.getResultList();
 			if (productList == null || productList.isEmpty()) {
 				throw new MerchantException("Return Product List folder is empty");
@@ -41,13 +41,14 @@ public class MerchantDAOImpl implements MerchantDAO {
 	@Override
 	public MerchantPermanentBean viewProfile(String email) {
 		MerchantPermanentBean merchantPermanentBean = null;
+		System.err.println(email);
 		EntityManager entityManager = entityManagerFactory.createEntityManager();
 		try {
-			EntityTransaction entityTransaction = entityManager.getTransaction();
 			String jpql = "from MerchantPermanentBean where email=:email";
 			Query query = entityManager.createQuery(jpql);
 			query.setParameter("email", email);
 			merchantPermanentBean = (MerchantPermanentBean) query.getSingleResult();
+			System.err.println(merchantPermanentBean);
 		} catch (Exception e) {
 			throw new MerchantException("Email not Present");
 		}

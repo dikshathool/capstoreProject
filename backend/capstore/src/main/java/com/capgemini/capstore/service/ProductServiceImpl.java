@@ -47,16 +47,5 @@ public class ProductServiceImpl implements ProductService {
 		return productDAO.showMerchantProducts(email);
 	}
 
-
-	@Override
-	public List<CouponBean> showCoupon() {
-		return productDAO.showCoupon();
-	}
-
-	@Override
-	public boolean addCoupon(CouponBean couponBean) {
-		return productDAO.addCoupon(couponBean);
-	}
-
 	
 }

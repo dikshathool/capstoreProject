@@ -37,7 +37,7 @@ public class ProductDAOImpl implements ProductDAO {
 			entityTransaction.commit();
 			entityManager.close();
 			addProduct = true;
-		} catch (Exception e) {
+		} catch (Exception exception) {
 			throw new CapstoreCustomException("Unable to add product");
 		}
 		return addProduct;
@@ -55,7 +55,7 @@ public class ProductDAOImpl implements ProductDAO {
 			entityManager.remove(productBean);
 			entityTransaction.commit();
 			product = true;
-		} catch (Exception e) {
+		} catch (Exception exception) {
 			throw new CapstoreCustomException("Unable to delete product");
 		}
 		return product;
@@ -121,7 +121,7 @@ public class ProductDAOImpl implements ProductDAO {
 				entityManager.persist(existingProductDetails);
 				entityTransaction.commit();
 				productUpdated = true;
-			} catch (Exception e) {
+			} catch (Exception exception) {
 				throw new CapstoreCustomException("Unable to update product");
 			}
 			entityManager.close();
@@ -157,40 +157,10 @@ public class ProductDAOImpl implements ProductDAO {
 					}
 				}
 			}
-		} catch (Exception e) {
+		} catch (Exception exception) {
 			throw new CapstoreCustomException("No Matched Records are Present");
 		}
 	}// End of deleteDiscountAfterExpiryDate()
-
-	@Override
-	public List<CouponBean> showCoupon() {
-		List<CouponBean> couponList = null;
-		entityManager = entityManagerFactory.createEntityManager();
-		try {
-			TypedQuery<CouponBean> query = entityManager.createQuery("from CouponBean", CouponBean.class);
-			couponList = query.getResultList();
-		} catch (Exception e) {
-			throw new CapstoreCustomException("There is no Products Present");
-		}
-		return couponList;
-	}
-
-	@Override
-	public boolean addCoupon(CouponBean couponBean) {
-		boolean isAdded = false;
-		try {
-			entityManager = entityManagerFactory.createEntityManager();
-			entityTransaction = entityManager.getTransaction();
-			entityTransaction.begin();
-			entityManager.persist(couponBean);
-			entityTransaction.commit();
-			entityManager.close();
-			isAdded = true;
-		} catch (Exception e) {
-			throw new CapstoreCustomException("Unable to add product");
-		}
-		return isAdded;
-	}
 
 	@Override
 	public List<ProductBean> showMerchantProducts(String email) {
@@ -201,7 +171,7 @@ public class ProductDAOImpl implements ProductDAO {
 			Query query = entityManager.createQuery(jpql);
 			query.setParameter("email", email);
 			productList = query.getResultList();
-		} catch (Exception e) {
+		} catch (Exception exception) {
 			throw new CapstoreCustomException("There is no Products Present");
 		}
 		return productList;
