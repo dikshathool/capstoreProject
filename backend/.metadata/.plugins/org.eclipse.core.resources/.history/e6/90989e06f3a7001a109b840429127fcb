@@ -1,0 +1,38 @@
+package com.capgemini.capstore.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.capgemini.capstore.bean.CapStoreResponse;
+import com.capgemini.capstore.bean.ProductBean;
+import com.capgemini.capstore.service.ProductService;
+
+@RestController
+//To connect rest with angular
+@CrossOrigin(origins = "*", allowedHeaders = "*")
+public class ProductController {
+	
+	@Autowired
+	private ProductService productService;
+	
+	@GetMapping(path = "/showAllProducts")
+	public CapStoreResponse showAllProducts() {
+		List<ProductBean> productList = productService.showAllProducts();
+		CapStoreResponse capStoreResponse = new CapStoreResponse();
+		if (productList != null && !productList.isEmpty()) {
+			capStoreResponse.setStatusCode(201);
+			capStoreResponse.setMessage("Success");
+			capStoreResponse.setDescription("Product Records Found...");
+			capStoreResponse.setProductList(productList);
+		} else {
+			capStoreResponse.setStatusCode(400);
+			capStoreResponse.setMessage("Failed");
+			capStoreResponse.setDescription("Enable to Fetch Product Records!");
+		}
+		return capStoreResponse;
+	}//End of showAllProducts()
+}//End of Class

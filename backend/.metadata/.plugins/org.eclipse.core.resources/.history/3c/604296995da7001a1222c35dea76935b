@@ -1,0 +1,17 @@
+package com.capgemini.capstore.service;
+
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+import com.capgemini.capstore.bean.ProductBean;
+
+@Service
+public class ProductServiceImpl implements ProductService {
+
+	@Override
+	public List<ProductBean> showAllProducts() {
+		return null;
+	}//End of showAllProducts()
+
+}

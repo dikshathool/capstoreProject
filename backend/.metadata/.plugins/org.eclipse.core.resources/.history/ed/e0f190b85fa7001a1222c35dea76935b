@@ -1,0 +1,11 @@
+package com.capgemini.capstore.dao;
+
+import java.util.List;
+
+import com.capgemini.capstore.bean.ProductBean;
+
+public interface ProductDAO {
+	public List<ProductBean> shwoAllProducts();
+	
+	public boolean deleteDiscountAfterExpiryDate();
+}//End of interface

@@ -1,0 +1,74 @@
+<div id="addProduct" class="section">
+    <div class="section-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-7 col-md-push-5">
+                    <div class="addProduct-cta">
+                        <h1>Add Product</h1>
+                    </div>
+                </div>
+                <div class="col-md-5 col-md-pull-7">
+                    <div class="addProduct-form">
+                        <form #addProduct="ngForm" (ngSubmit)="product(addProduct)">
+                            <h2>Product Details</h2>
+                            <div class="form-group">
+                                <span class="form-label">Product Name</span>
+                                <input class="form-control" name="productName" #productName="ngModel" ngModel type="text"
+                                    placeholder="Enter product name">
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <span class="form-label">Product Price</span>
+                                        <input class="form-control" name="productPrice" #productPrice="ngModel" ngModel
+                                            type="text" required>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <span class="form-label">Product Quantity</span>
+                                        <input class="form-control" name="productQuantity" #productQuantity="ngModel" ngModel
+                                            type="text" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <span class="form-label">Product Category</span>
+                                <input class="form-control" name="productCategory" #productCategory="ngModel" ngModel type="text"
+                                    placeholder="Enter product category">
+                            </div>
+                            <div class="form-group">
+                                <span class="form-label">Product image</span>
+                                <input class="form-control" name="productImage" #productImage="ngModel" ngModel type="text"
+                                    placeholder="Enter image path">
+                            </div>
+                            <div class="form-group">
+                                <span class="form-label">Product Discount</span>
+                                <input class="form-control" name="productDiscount" #productDiscount="ngModel" ngModel type="text"
+                                    placeholder="Enter product discount">
+                            </div>
+                            <div class="form-group">
+                                <span class="form-label">Product Discount Expiry Date</span>
+                                <input class="form-control" name="productDiscountExpiryDate" #productDiscount="ngModel" ngModel type="text"
+                                    placeholder="Enter product discount">
+                            </div>
+                            <div class="form-group">
+                                <span class="form-label">Brand Name</span>
+                                <input class="form-control" name="productBrandName" #productBrandName="ngModel" ngModel type="text"
+                                    placeholder="Enter brand name">
+                            </div>
+                            <div class="form-group">
+                                <span class="form-label">Email</span>
+                                <input class="form-control" name="email" #email="ngModel" ngModel type="text" pattern="^[a-zA-z]+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$" maxlength="35" required
+                                    placeholder="Enter email id">
+                            </div>
+                            <div class="form-btn">
+                                <button class="btn btn-primary" [disabled]="addProduct.invalid">Add Product</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

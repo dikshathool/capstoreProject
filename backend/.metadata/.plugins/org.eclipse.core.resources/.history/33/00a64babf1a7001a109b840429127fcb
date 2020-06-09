@@ -1,0 +1,9 @@
+package com.capgemini.capstore.exception;
+
+public class CapStoreException extends RuntimeException {
+	// It is unique id used to identify class
+		private static final long serialVersionUID = 1L;
+		public CapStoreException(String s) {
+			System.out.println(s);
+		}
+}//End of Class

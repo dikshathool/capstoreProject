@@ -1,0 +1,14 @@
+package com.capgemini.capstore.dao;
+
+import java.util.List;
+
+import com.capgemini.capstore.bean.ReturnProductBean;
+
+public class MerchantDAOImpl implements MerchantDAO {
+
+	@Override
+	public List<ReturnProductBean> getReturnProductList(int merchantId) {
+		return null;
+	}
+
+}

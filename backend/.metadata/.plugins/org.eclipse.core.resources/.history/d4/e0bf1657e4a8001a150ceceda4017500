@@ -1,0 +1,5 @@
+package com.capgemini.capstore.dao;
+
+public interface MerchantDAO {
+	public List<ReturnProductBean> getReturnProductList(int merchantId) ;
+}//End of interface

@@ -1,0 +1,5 @@
+package com.capgemini.capstore.service;
+
+public interface MerchantService {
+
+}

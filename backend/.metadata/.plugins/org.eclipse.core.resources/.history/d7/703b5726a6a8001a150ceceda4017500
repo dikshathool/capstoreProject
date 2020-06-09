@@ -1,0 +1,21 @@
+package com.capgemini.capstore.service;
+
+import java.time.LocalDate;
+import java.util.List;
+
+import com.capgemini.capstore.bean.ProductBean;
+
+public interface ProductService {
+	public List<ProductBean> showAllProducts();
+	
+	public boolean deleteDiscountAfterExpiryDate(LocalDate currentDate);
+	
+	// add product
+	public boolean addProduct(ProductBean productBean);
+
+	// delete product
+	public boolean deleteProduct(int productId);
+
+	// update product
+	public boolean updateProduct(ProductBean productBean);
+}//End of interface

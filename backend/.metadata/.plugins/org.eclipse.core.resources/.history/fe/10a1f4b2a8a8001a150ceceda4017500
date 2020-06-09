@@ -1,0 +1,253 @@
+package com.capgemini.capstore.dao;
+
+import java.time.LocalDate;
+import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
+import javax.persistence.PersistenceUnit;
+import javax.persistence.Query;
+import javax.persistence.TypedQuery;
+
+import org.springframework.stereotype.Repository;
+
+import com.capgemini.capstore.bean.ProductBean;
+import com.capgemini.capstore.exception.CapstoreCustomException;
+
+@Repository
+public class ProductDAOImpl implements ProductDAO {
+	
+	@PersistenceUnit
+	public EntityManagerFactory entityManagerFactory;
+
+	EntityManager entityManager;
+	EntityTransaction entityTransaction;
+	
+//	public ProductDAOImpl() {
+//		deleteDiscountAfterExpiryDate();
+//	}
+
+	// Add product
+	@Override
+	public boolean addProduct(ProductBean productBean) {
+		boolean addProduct = false;
+		try {
+			entityManager = entityManagerFactory.createEntityManager();
+			entityTransaction = entityManager.getTransaction();
+			entityTransaction.begin();
+			entityManager.persist(productBean);
+			entityTransaction.commit();
+			entityManager.close();
+			addProduct = true;
+		} catch (Exception e) {
+			throw new CapstoreCustomException("Unable to add product");
+		}
+		return addProduct;
+	}
+
+	// Delete product
+	@Override
+	public boolean deleteProduct(int productId) {
+		boolean product = false;
+		try {
+			entityManager = entityManagerFactory.createEntityManager();
+			entityTransaction = entityManager.getTransaction();
+			entityTransaction.begin();
+			ProductBean hotelBean = entityManager.find(ProductBean.class, productId);
+			entityManager.remove(hotelBean);
+			entityTransaction.commit();
+			product = true;
+		} catch (Exception e) {
+			throw new CapstoreCustomException("Unable to delete product");
+		}
+		return product;
+	}
+
+	// Update product
+	@Override
+	public boolean updateProduct(ProductBean productBean) {
+		entityManager = entityManagerFactory.createEntityManager();
+		ProductBean existingProductDetails = entityManager.find(ProductBean.class, productBean.getProductId());
+		boolean productUpdated = false;
+
+		if (existingProductDetails != null) {
+
+			String productName = productBean.getProductName();
+			if (productName != null) {
+				existingProductDetails.setProductName(productName);
+			}
+
+			String productPrice = productBean.getProductPrice();
+			if (productPrice != null) {
+				existingProductDetails.setProductPrice(productPrice);
+			}
+
+			String productQuantity = productBean.getProductPrice();
+			if (productQuantity != null) {
+				existingProductDetails.setProductQuantity(productQuantity);
+			}
+
+			String productCategory = productBean.getProductCategory();
+			if (productCategory != null) {
+				existingProductDetails.setProductCategory(productCategory);
+			}
+
+			String productImage = productBean.getProductImage();
+			if (productImage != null) {
+				existingProductDetails.setProductImage(productImage);
+			}
+
+			double productDiscount = productBean.getProductDiscount();
+			if (productDiscount >= 0) {
+				existingProductDetails.setProductDiscount(productDiscount);
+			}
+			
+			LocalDate productDiscountExpiryDate = productBean.getProductDiscountExpiryDate();
+			if (productDiscountExpiryDate != null) {
+				existingProductDetails.setProductDiscountExpiryDate(productDiscountExpiryDate);
+			}
+			
+			String productBrandName = productBean.getProductBrandName();
+			if (productBrandName != null) {
+				existingProductDetails.setProductBrandName(productBrandName);
+			}
+			
+			String email = productBean.getEmail();
+			if (email != null) {
+				existingProductDetails.setEmail(email);
+			}
+
+			try {
+				entityTransaction = entityManager.getTransaction();
+				entityTransaction.begin();
+				entityManager.persist(existingProductDetails);
+				entityTransaction.commit();
+				productUpdated = true;
+			} catch (Exception e) {
+				throw new CapstoreCustomException("Unable to update product");
+			}
+			entityManager.close();
+		}
+		return productUpdated;
+	}
+	
+//	@SuppressWarnings("unchecked")
+//	@Override
+//	public List<ProductBean> showAllProducts() {
+//		List<ProductBean> productList = null;
+//		LocalDate currentDate = LocalDate.now();
+//		entityManager = entityManagerFactory.createEntityManager();
+//		String jpql = "FROM ProductBean";
+//		Query query = entityManager.createQuery(jpql);
+//		try {
+//			entityTransaction = entityManager.getTransaction();
+//			entityTransaction.begin();
+//			
+//			if(deleteDiscountAfterExpiryDate(currentDate)) {
+//				System.err.println("inside if");
+//				productList = query.getResultList();
+//				System.out.println(productList);
+//			} else {
+//				System.err.println("inside else");
+//				productList = query.getResultList();
+//			}
+//			
+//			entityTransaction.commit();
+//		} catch (Exception e) {
+//			throw new CapstoreCustomException("There is no Products Present");
+//		}
+//		return productList;
+//	}//End of showAllProducts()
+//
+//	@SuppressWarnings("unchecked")
+//	@Override
+//	public boolean deleteDiscountAfterExpiryDate(LocalDate currentDate) {
+//		boolean isMatched = false;
+//		try {
+//			entityManager = entityManagerFactory.createEntityManager();
+//			entityTransaction = entityManager.getTransaction();
+//			entityTransaction.begin();
+//			//Retrieving all products from table
+//			String jpql = "FROM ProductBean";
+//			Query query = entityManager.createQuery(jpql);
+//			List<ProductBean> productList = query.getResultList();
+//			for (ProductBean productBean : productList) {
+//				System.err.println("Inside for loop");
+//				System.err.println(productBean.getProductDiscountExpiryDate());
+//				boolean status = productBean.getProductDiscountExpiryDate().isEqual(currentDate);
+//				System.err.println(status);
+//				if (productBean.getProductDiscountExpiryDate().isEqual(currentDate)) {
+////					productBean.setProductName(productBean.getProductName());
+////					productBean.setEmail(productBean.getEmail());
+////					productBean.setProductBrandName(productBean.getProductBrandName());
+////					productBean.setProductCategory(productBean.getProductCategory());
+////					productBean.setProductImage(productBean.getProductImage());
+////					productBean.setProductPrice(productBean.getProductPrice());
+////					productBean.setProductQuantity(productBean.getproductQuantity());
+//					
+//					productBean.setProductDiscount(0.0);
+//					productBean.setProductDiscountExpiryDate(null);
+//					System.err.println("Before persist");
+//					entityManager.persist(productBean);
+//					
+//					System.err.println(productBean.getProductDiscount());
+//					System.err.println(productBean.getProductDiscountExpiryDate());
+//					System.err.println("After Persist");
+//					isMatched = true;	
+//					System.err.println(isMatched);
+//					
+//				} else {
+//					isMatched = false;
+//				}
+//				entityTransaction.commit();	
+//				
+//			}
+//			
+//
+//		} catch (Exception e) {
+//			throw new CapstoreCustomException("No Matched Records are Present");
+//		}
+//		
+//		return isMatched;
+//	}//End of deleteDiscountAfterExpiryDate()
+	
+	
+	
+	 @SuppressWarnings("unchecked")
+	    @Override
+	    public List<ProductBean> showAllProducts() {
+		 deleteDiscountAfterExpiryDate();
+		 
+	        List<ProductBean> productList = null;
+	       	        entityManager = entityManagerFactory.createEntityManager();
+	        try {
+	            TypedQuery<ProductBean> query = entityManager.createQuery("from ProductBean", ProductBean.class);
+	            productList = query.getResultList();
+	        } catch (Exception e) {
+	            throw new CapstoreCustomException("There is no Products Present");
+	        }
+	        return productList;
+	    }//End of showAllProducts()
+
+	    @SuppressWarnings("unchecked")
+	    @Override
+	    public void deleteDiscountAfterExpiryDate() {
+	        LocalDate currentDate = LocalDate.now();
+	        try {
+	            List<ProductBean> products = showAllProducts();
+	            if (products != null) {
+	                for (ProductBean product : products) {
+	                    if (currentDate.compareTo(product.getProductDiscountExpiryDate()) <= 0) {
+	                        product.setProductDiscount(0);
+	                        updateProduct(product);
+	                    }
+	                }
+	            }
+	        } catch (Exception e) {
+	            throw new CapstoreCustomException("No Matched Records are Present");
+	        }
+	    }//End of deleteDiscountAfterExpiryDate()
+	
+
+}//End of Class

@@ -1,0 +1,6 @@
+package com.capgemini.capstore.bean;
+
+@JsonInclude(JsonInclude.Include.NON_DEFAULT)
+public class CapStoreResponse {
+
+}

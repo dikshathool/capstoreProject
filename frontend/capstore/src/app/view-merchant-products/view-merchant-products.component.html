@@ -1,0 +1,128 @@
+<div class="container col-md-3 card card-body float-left"*ngFor='let product of productService.productArray' style="height: 550px;">
+    <img [src]="product.productImage" style="height: 175px;">
+    <h5 class="text-center mt-5" style="color: blueviolet;">{{product.productName}}</h5>
+    <h6 class="text-center">Product Brand : {{product.productBrandName}}</h6>
+    <h6 class="text-center">Product Price : {{product.productPrice}}</h6>
+    <h6 class="text-center">Product category : {{product.productCategory}}</h6>
+    <h6 class="text-center">{{product.productDiscount}} % Off</h6>
+    <h6 class="text-center">After discout price : {{calculateDiscountPrice(product.productPrice, product.productDiscount)}}</h6>
+    <button (click)='deleteProduct(product.productId)'>
+        Delete
+    </button>
+    <br>
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"
+        (click)='selectProduct(product)'>
+        Update
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Update Product Details</h5>
+                    <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+                        (click)="productService.getMerchantProductList()">
+                        <span aria-hidden="true">&times;</span>
+                    </button> -->
+                </div>
+                <div class="modal-body">
+                    <form #updateProduct="ngForm" (ngSubmit)="updateProductForm(updateProduct)">
+                        <div class="form-group">
+                            <label for="productName">Product Name</label>
+                            <input type="text" name="productName" class="form-control" #productName="ngModel"
+                                [(ngModel)]="selectedProduct.productName" required>
+                            <div *ngIf='productName.touched && productName.invalid'>
+                                <p class="alert alert-danger" *ngIf='productName.errors.required'>Product
+                                    name is mandatory</p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="productPrice">Product Price</label>
+                            <input type="text" name="productPrice" class="form-control" #productPrice="ngModel"
+                                [(ngModel)]="selectedProduct.productPrice" required>
+                            <div *ngIf='productPrice.touched && productPrice.invalid'>
+                                <p class="alert alert-danger" *ngIf='productPrice.errors.required'>Product
+                                    price is mandatory</p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="productQuantity">Product Quantity</label>
+                            <input type="text" name="productQuantity" class="form-control" #productPrice="ngModel"
+                                [(ngModel)]="selectedProduct.productQuantity" required>
+                            <!-- <div *ngIf='productQuantity.touched && productQuantity.invalid'>
+                                <p class="alert alert-danger" *ngIf='productQuantity.errors.required'>Product
+                                    quantity is mandatory</p>
+                            </div> -->
+                        </div>
+                        <div class="form-group">
+                            <label for="productCategory">Product Category</label>
+                            <input type="text" name="productCategory" class="form-control" #productCategory="ngModel"
+                                [(ngModel)]="selectedProduct.productCategory" required>
+                            <div *ngIf='productCategory.touched && productCategory.invalid'>
+                                <p class="alert alert-danger" *ngIf='productCategory.errors.required'>Product
+                                    category is mandatory</p>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="productImage">Product Image</label>
+                            <input type="text" name="productImage" class="form-control" #productImage="ngModel"
+                                [(ngModel)]="selectedProduct.productImage" required>
+                            <div *ngIf='productImage.touched && productImage.invalid'>
+                                <p class="alert alert-danger" *ngIf='productImage.errors.required'>Product
+                                    image is mandatory</p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="productDiscount">Product Discount</label>
+                            <input type="number" name="productDiscount" class="form-control" #productDiscount="ngModel"
+                                [(ngModel)]="selectedProduct.productDiscount">
+                        </div>
+                        <div class="form-group">
+                            <label for="productDiscountExpiryDate">Product Discount Expiry</label>
+                            <input type="text" name="productDiscountExpiryDate" class="form-control"
+                                #productDiscountExpiryDate="ngModel"
+                                [(ngModel)]="selectedProduct.productDiscountExpiryDate">
+                        </div>
+                        <div class="form-group">
+                            <label for="productBrandName">Brand Name</label>
+                            <input type="text" name="productBrandName" class="form-control" #productBrandName="ngModel"
+                                [(ngModel)]="selectedProduct.productBrandName" required>
+                            <div *ngIf='productBrandName.touched && productBrandName.invalid'>
+                                <p class="alert alert-danger" *ngIf='productBrandName.errors.required'>Product
+                                    brand name is mandatory</p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="text" name="email" class="form-control" #email="ngModel"
+                                [(ngModel)]="selectedProduct.email" required>
+                            <div *ngIf='email.touched && email.invalid'>
+                                <p class="alert alert-danger" *ngIf='email.errors.required'>Email is mandatory</p>
+                            </div>
+                        </div>
+
+                        <div class="btn-group float-right">
+                            <button type="reset" class="btn btn-outline-dark">Reset
+                            </button>
+                            <button type="submit" class="btn btn-outline-primary"
+                                [disabled]='updateProduct.invalid'>Update
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        div
+    </div>
+
+    <!-- <button (click)='addToCart()' *ngIf='isUser()'>
+        Add to Cart
+    </button>
+    <button (click)='addToWishlist()' *ngIf='isUser()'>
+        Add to Wishlist
+    </button> -->
+</div>

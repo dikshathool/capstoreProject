@@ -1,0 +1,5 @@
+package com.capgemini.capstore.dao;
+
+public interface MerchantDAO {
+
+}//End of interface

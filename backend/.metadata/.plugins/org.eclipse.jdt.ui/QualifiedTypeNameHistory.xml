@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RestController"/>
+<fullyQualifiedTypeName name="org.springframework.web.bind.annotation.CrossOrigin"/>
+<fullyQualifiedTypeName name="org.springframework.stereotype.Service"/>
+<fullyQualifiedTypeName name="org.springframework.stereotype.Repository"/>
+<fullyQualifiedTypeName name="java.lang.Runtime"/>
+<fullyQualifiedTypeName name="java.lang.RuntimeException"/>
+<fullyQualifiedTypeName name="com.capgemini.capstore.exception.CapStoreException"/>
+<fullyQualifiedTypeName name="org.springframework.web.bind.annotation.GetMapping"/>
+<fullyQualifiedTypeName name="com.fasterxml.jackson.annotation.JsonInclude"/>
+<fullyQualifiedTypeName name="com.capgemini.capstore.bean.CapStoreResponse"/>
+<fullyQualifiedTypeName name="javax.persistence.GeneratedValue"/>
+<fullyQualifiedTypeName name="javax.persistence.GenerationType"/>
+<fullyQualifiedTypeName name="javax.persistence.Id"/>
+<fullyQualifiedTypeName name="com.capgemini.capstore.exception.CapstoreCustomException"/>
+<fullyQualifiedTypeName name="org.springframework.web.bind.annotation.DeleteMapping"/>
+<fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PostMapping"/>
+<fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestBody"/>
+<fullyQualifiedTypeName name="com.capgemini.capstore.bean.CartBean"/>
+<fullyQualifiedTypeName name="javax.persistence.TypedQuery"/>
+<fullyQualifiedTypeName name="com.capgemini.capstore.dao.ProductDAOImpl"/>
+<fullyQualifiedTypeName name="com.capgemini.capstore.controller.ProductController"/>
+<fullyQualifiedTypeName name="com.capgemini.capstore.service.ProductService"/>
+<fullyQualifiedTypeName name="java.time.LocalDate"/>
+<fullyQualifiedTypeName name="com.capgemini.capstore.exception.MerchantException"/>
+<fullyQualifiedTypeName name="javax.persistence.PersistenceUnit"/>
+<fullyQualifiedTypeName name="javax.persistence.EntityManagerFactory"/>
+<fullyQualifiedTypeName name="javax.persistence.EntityManager"/>
+<fullyQualifiedTypeName name="javax.persistence.Query"/>
+<fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
+<fullyQualifiedTypeName name="com.capgemini.capstore.dao.MerchantDAO"/>
+<fullyQualifiedTypeName name="javax.validation.Validation"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="javax.persistence.EntityTransaction"/>
+<fullyQualifiedTypeName name="com.capgemini.capstore.bean.CouponBean"/>
+<fullyQualifiedTypeName name="com.capgemini.capstore.dao.ProductDAO"/>
+<fullyQualifiedTypeName name="com.capgemini.capstore.bean.ProductBean"/>
+<fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestParam"/>
+<fullyQualifiedTypeName name="com.capgemini.capstore.service.MerchantService"/>
+<fullyQualifiedTypeName name="com.capgemini.capstore.bean.ReturnProductBean"/>
+<fullyQualifiedTypeName name="com.capgemini.capstore.bean.MerchantPermanentBean"/>
+</qualifiedTypeNameHistroy>

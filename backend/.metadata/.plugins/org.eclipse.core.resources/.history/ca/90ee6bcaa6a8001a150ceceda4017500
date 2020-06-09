@@ -1,0 +1,43 @@
+package com.capgemini.capstore.service;
+
+import java.time.LocalDate;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.capgemini.capstore.bean.ProductBean;
+import com.capgemini.capstore.dao.ProductDAO;
+
+@Service
+public class ProductServiceImpl implements ProductService {
+	
+	@Autowired
+	private ProductDAO productDAO;
+
+	@Override
+	public List<ProductBean> showAllProducts() {
+		return productDAO.showAllProducts();
+	}//End of showAllProducts()
+
+//	@Override
+//	public boolean deleteDiscountAfterExpiryDate(LocalDate currentDate) {
+//		return productDAO.deleteDiscountAfterExpiryDate(currentDate);
+//	}
+	
+	@Override
+	public boolean addProduct(ProductBean productBean) {
+		return productDAO.addProduct(productBean);
+	}
+
+	@Override
+	public boolean deleteProduct(int productId) {
+		return productDAO.deleteProduct(productId);
+	}
+
+	@Override
+	public boolean updateProduct(ProductBean productBean) {
+		return productDAO.updateProduct(productBean);
+	}
+
+}
