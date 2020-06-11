@@ -27,33 +27,33 @@ public class AdminStepDefination {
 		driver.manage().window().maximize();
 	}
 
-	@When("^Admin Clicks on login Link$")
-	public void admin_Clicks_on_login_Link() throws Throwable {
-		driver.findElement(By.xpath("//a[text()='Login']")).click();
-		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		Thread.sleep(2000);
-	}
-
-	@When("^Admin enter valid email Id$")
-	public void admin_enter_valid_email_Id() throws Throwable {
-		driver.findElement(By.name("email")).sendKeys("samsung123@gmail.com");
-		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		Thread.sleep(2000);
-	}
-
-	@When("^Admin enter valid password$")
-	public void admin_enter_valid_password() throws Throwable {
-		driver.findElement(By.name("password")).sendKeys("samsung@123");
-		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		Thread.sleep(2000);
-	}
-
-	@When("^click on login button$")
-	public void click_on_login_button() throws Throwable {
-		driver.findElement(By.xpath("//button[text()='Login']")).click();
-		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		Thread.sleep(2000);
-	}
+//	@When("^Admin Clicks on login Link$")
+//	public void admin_Clicks_on_login_Link() throws Throwable {
+//		driver.findElement(By.xpath("//a[text()='Login']")).click();
+//		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+//		Thread.sleep(2000);
+//	}
+//
+//	@When("^Admin enter valid email Id$")
+//	public void admin_enter_valid_email_Id() throws Throwable {
+//		driver.findElement(By.name("email")).sendKeys("samsung123@gmail.com");
+//		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+//		Thread.sleep(2000);
+//	}
+//
+//	@When("^Admin enter valid password$")
+//	public void admin_enter_valid_password() throws Throwable {
+//		driver.findElement(By.name("password")).sendKeys("samsung@123");
+//		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+//		Thread.sleep(2000);
+//	}
+//
+//	@When("^click on login button$")
+//	public void click_on_login_button() throws Throwable {
+//		driver.findElement(By.xpath("//button[text()='Login']")).click();
+//		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+//		Thread.sleep(2000);
+//	}
 
 	@Then("^admin should get navigated to admin home page$")
 	public void admin_should_get_navigated_to_admin_home_page() throws Throwable {

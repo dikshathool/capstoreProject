@@ -23,13 +23,14 @@ import com.capgemini.capstore.service.ProductService;
 //To connect rest with angular
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class ProductController {
-
+	
+	@Autowired
 	private ProductService productService;
 
-	@Autowired
-	public ProductController(ProductService productService) {
-		this.productService = productService;
-	}
+	
+//	public ProductController(ProductService productService) {
+//		this.productService = productService;
+//	}
 
 	CapStoreResponse capStoreResponse = new CapStoreResponse();
 

@@ -1,11 +1,11 @@
 Feature: Managing Admin Inventory 
 Background: 
 	Given Admin has loaded the Application in the browser 
-	When Admin Clicks on login Link
-	And Admin enter valid email Id
-	And Admin enter valid password 
-	And click on login button 
-	Then admin should get navigated to admin home page 
+#	When Admin Clicks on login Link
+#	And Admin enter valid email Id
+#	And Admin enter valid password 
+#	And click on login button 
+#	Then admin should get navigated to admin home page 
 	
 Scenario: Admin Can Add new Product Into Inventory 
 	Given Admin on Admin Home Page 

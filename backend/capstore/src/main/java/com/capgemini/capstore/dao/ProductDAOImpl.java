@@ -10,6 +10,7 @@ import javax.persistence.PersistenceUnit;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.capgemini.capstore.bean.CouponBean;
@@ -19,8 +20,8 @@ import com.capgemini.capstore.exception.CapstoreCustomException;
 @Repository
 public class ProductDAOImpl implements ProductDAO {
 
-	@PersistenceUnit
-	public EntityManagerFactory entityManagerFactory;
+	@Autowired
+	private EntityManagerFactory entityManagerFactory;
 
 	EntityManager entityManager;
 	EntityTransaction entityTransaction;
